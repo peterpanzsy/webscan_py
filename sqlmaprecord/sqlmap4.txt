@@ -1,0 +1,143 @@
+
+推荐登录注册关注此空间
+Ca3tie1的空间
+2012-04-07 23:59 sqlmap的payload之强大！
+亮点在时间。
+# ./sqlmap.py --url "http://192.168.1.104:8080/www.xxxx.com?__sql__=" --batch --banner --level=5
+    sqlmap/1.0-dev (r4766) - automatic SQL injection and database takeover tool
+    http://www.sqlmap.org
+[!] legal disclaimer: usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Authors assume no liability and are not responsible for any misuse or damage caused by this program
+[*] starting at 21:30:03
+[21:30:03] [INFO] using '/pentest/database/sqlmap/output/192.168.1.104/session' as session file
+[21:30:03] [INFO] testing connection to the target url
+[21:30:07] [INFO] testing if the url is stable, wait a few seconds
+[21:30:09] [INFO] url is stable
+[21:30:09] [INFO] testing if GET parameter '__sql__' is dynamic
+[21:30:11] [WARNING] GET parameter '__sql__' appears to be not dynamic
+[21:30:12] [INFO] heuristics detected web page charset 'ascii'
+[21:30:12] [WARNING] heuristic test shows that GET parameter '__sql__' might not be injectable
+[21:30:12] [INFO] testing sql injection on GET parameter '__sql__'
+[21:30:12] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[21:34:36] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)'
+[21:36:01] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[21:40:59] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause (Generic comment)'
+[21:45:16] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[21:47:13] [INFO] testing 'MySQL boolean-based blind - WHERE or HAVING clause (RLIKE)'
+[21:52:37] [INFO] testing 'Generic boolean-based blind - Parameter replace (original value)'
+[21:52:46] [INFO] testing 'MySQL boolean-based blind - Parameter replace (MAKE_SET - original value)'
+[21:52:57] [INFO] testing 'MySQL boolean-based blind - Parameter replace (ELT - original value)'
+[21:53:07] [INFO] testing 'MySQL boolean-based blind - Parameter replace (bool*int - original value)'
+[21:53:17] [INFO] testing 'MySQL >= 5.0 boolean-based blind - Parameter replace (original value)'
+[21:53:30] [INFO] testing 'MySQL < 5.0 boolean-based blind - Parameter replace (original value)'
+[21:53:46] [INFO] testing 'Microsoft SQL Server/Sybase boolean-based blind - Parameter replace (original value)'
+[21:53:55] [INFO] testing 'Oracle boolean-based blind - Parameter replace (original value)'
+[21:54:06] [INFO] testing 'Microsoft Access boolean-based blind - Parameter replace (original value)'
+[21:54:18] [INFO] testing 'SAP MaxDB boolean-based blind - Parameter replace (original value)'
+[21:54:35] [INFO] testing 'Generic boolean-based blind - GROUP BY and ORDER BY clauses'
+[21:54:45] [INFO] testing 'Generic boolean-based blind - GROUP BY and ORDER BY clauses (original value)'
+[21:54:53] [INFO] testing 'MySQL >= 5.0 boolean-based blind - GROUP BY and ORDER BY clauses'
+[21:55:09] [INFO] testing 'MySQL < 5.0 boolean-based blind - GROUP BY and ORDER BY clauses'
+[21:55:17] [INFO] testing 'Microsoft SQL Server/Sybase boolean-based blind - ORDER BY clause'
+[21:55:29] [INFO] testing 'Oracle boolean-based blind - GROUP BY and ORDER BY clauses'
+[21:55:40] [INFO] testing 'Microsoft Access boolean-based blind - GROUP BY and ORDER BY clauses'
+[21:55:54] [INFO] testing 'MySQL stacked conditional-error blind queries'
+[22:00:33] [INFO] testing 'PostgreSQL stacked conditional-error blind queries'
+[22:05:13] [INFO] testing 'Microsoft SQL Server/Sybase stacked conditional-error blind queries'
+[22:08:03] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:08:39] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE or HAVING clause'
+[22:09:48] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE or HAVING clause (EXTRACTVALUE)'
+[22:10:46] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:11:18] [INFO] testing 'MySQL >= 5.1 AND error-based - WHERE or HAVING clause (UPDATEXML)'
+[22:12:21] [INFO] testing 'MySQL >= 4.1 AND error-based - WHERE or HAVING clause'
+[22:13:04] [INFO] testing 'PostgreSQL AND error-based - WHERE or HAVING clause'
+[22:13:41] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:14:10] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause'
+[22:14:49] [INFO] testing 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)'
+[22:15:41] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (XMLType)'
+[22:16:21] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)'
+[22:17:09] [INFO] testing 'Oracle AND error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)'
+[22:18:13] [INFO] testing 'Firebird AND error-based - WHERE or HAVING clause'
+[22:19:13] [INFO] testing 'MySQL >= 5.0 error-based - Parameter replace'
+[22:19:15] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (EXTRACTVALUE)'
+[22:19:16] [INFO] testing 'MySQL >= 5.1 error-based - Parameter replace (UPDATEXML)'
+[22:19:17] [INFO] testing 'PostgreSQL error-based - Parameter replace'
+[22:19:18] [INFO] testing 'Microsoft SQL Server/Sybase error-based - Parameter replace'
+[22:19:32] [INFO] testing 'Oracle error-based - Parameter replace'
+[22:20:02] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:20:30] [INFO] testing 'Firebird error-based - Parameter replace'
+[22:21:01] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:21:31] [INFO] testing 'MySQL >= 5.0 error-based - GROUP BY and ORDER BY clauses'
+[22:22:01] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:22:32] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:23:03] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:23:34] [INFO] testing 'MySQL >= 5.1 error-based - GROUP BY and ORDER BY clauses (EXTRACTVALUE)'
+[22:24:04] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:24:35] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:25:06] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:25:35] [INFO] testing 'MySQL >= 5.1 error-based - GROUP BY and ORDER BY clauses (UPDATEXML)'
+[22:26:05] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:26:36] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:27:07] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:27:37] [INFO] testing 'PostgreSQL error-based - GROUP BY and ORDER BY clauses'
+[22:28:07] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:28:38] [CRITICAL] connection timed out to the target url or proxy, sqlmap is going to retry the request
+[22:28:41] [INFO] testing 'Microsoft SQL Server/Sybase error-based - ORDER BY clause'
+[22:28:42] [INFO] testing 'Oracle error-based - GROUP BY and ORDER BY clauses'
+[22:28:43] [INFO] testing 'MySQL > 5.0.11 stacked queries'
+[22:29:36] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:29:36] [WARNING] most probably web server instance hasn't recovered yet from previous timed based payload. If the problem persists please wait for few minutes and rerun without flag T in option '--technique' (e.g. --flush-session --technique=BEUS) or try to lower the value of option '--time-sec' (e.g. --time-sec=2)
+[22:30:15] [INFO] testing 'PostgreSQL > 8.1 stacked queries'
+[22:31:24] [INFO] testing 'PostgreSQL < 8.2 stacked queries (Glibc)'
+[22:32:04] [INFO] testing 'Microsoft SQL Server/Sybase stacked queries'
+[22:33:03] [INFO] testing 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE)'
+[22:33:55] [INFO] testing 'Oracle stacked queries (DBMS_LOCK.SLEEP)'
+[22:35:07] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:35:16] [INFO] testing 'Oracle stacked queries (USER_LOCK.SLEEP)'
+[22:36:13] [INFO] testing 'MySQL > 5.0.11 AND time-based blind'
+[22:37:15] [INFO] testing 'MySQL > 5.0.11 AND time-based blind (comment)'
+[22:38:07] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind'
+[22:39:05] [INFO] testing 'PostgreSQL > 8.1 AND time-based blind (comment)'
+[22:39:54] [INFO] testing 'Microsoft SQL Server/Sybase time-based blind'
+[22:40:30] [INFO] testing 'Oracle AND time-based blind'
+[22:40:57] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:41:59] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[22:42:23] [INFO] testing 'Oracle AND time-based blind (comment)'
+[22:43:07] [INFO] testing 'MySQL UNION query (NULL) - 1 to 10 columns'
+[22:43:27] [INFO] target url appears to be UNION injectable with 5 columns
+[22:43:41] [WARNING] if UNION based SQL injection is not detected, please consider usage of option '--union-char' (e.g. --union-char=1) and/or try to force the back-end DBMS (e.g. --dbms=mysql) 
+[22:45:30] [INFO] target url appears to be UNION injectable with 10 columns
+[22:46:23] [INFO] target url appears to be UNION injectable with 8 columns
+[22:55:10] [INFO] testing 'MySQL UNION query (random number) - 1 to 10 columns'
+[22:59:43] [INFO] target url appears to be UNION injectable with 6 columns
+[23:04:14] [INFO] testing 'MySQL UNION query (NULL) - 11 to 20 columns'
+[23:07:50] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:08:23] [INFO] target url appears to be UNION injectable with 17 columns
+[23:09:39] [INFO] target url appears to be UNION injectable with 14 columns
+[23:16:05] [INFO] testing 'MySQL UNION query (random number) - 11 to 20 columns'
+[23:18:14] [INFO] target url appears to be UNION injectable with 12 columns
+[23:19:13] [INFO] target url appears to be UNION injectable with 19 columns
+[23:20:33] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:27:30] [INFO] testing 'MySQL UNION query (NULL) - 21 to 30 columns'
+[23:28:45] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:29:07] [INFO] target url appears to be UNION injectable with 24 columns
+[23:30:57] [INFO] target url appears to be UNION injectable with 26 columns
+[23:31:52] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:33:40] [INFO] target url appears to be UNION injectable with 25 columns
+[23:38:41] [INFO] target url appears to be UNION injectable with 21 columns
+[23:44:15] [INFO] testing 'MySQL UNION query (random number) - 21 to 30 columns'
+[23:45:49] [INFO] target url appears to be UNION injectable with 30 columns
+[23:50:24] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:51:21] [INFO] target url appears to be UNION injectable with 28 columns
+[23:52:58] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:56:33] [CRITICAL] the target url responded with an unknown HTTP status code, try to force the HTTP User-Agent header with option '--user-agent' or switch '--random-agent', sqlmap is going to retry the request
+[23:56:36] [WARNING] user aborted during detection phase
+[23:56:39] [WARNING] HTTP error codes detected during testing:on phase/(n)ext parameter/(q)uit] 
+500 (Internal Server Error) - 881 times
+[23:56:39] [ERROR] user aborted
+[*] shutting down at 23:56:39
+果断结束之！！！
+#安全随笔 举报 浏览(149) 评论 转载
+评论
+
+帮助中心 | 空间客服 | 投诉中心 | 空间协议
+?2012 Baidu

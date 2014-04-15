@@ -1,0 +1,30 @@
+
+    sqlmap/0.9 - automatic SQL injection and database takeover tool
+    http://sqlmap.sourceforge.net
+
+[*] starting at: 16:53:51
+
+[16:53:51] [DEBUG] cleaning up configuration parameters
+[16:53:51] [DEBUG] setting the HTTP timeout
+[16:53:51] [DEBUG] setting the HTTP method to GET
+[16:53:51] [DEBUG] creating HTTP requests opener object
+[16:53:52] [INFO] using 'D:\Python25\sqlmap\output\fist.xjtu.edu.cn\session' as session file
+[16:53:52] [INFO] testing connection to the target url
+[16:53:52] [INFO] testing if the url is stable, wait a few seconds
+[16:53:53] [INFO] url is stable
+[16:53:53] [INFO] testing if GET parameter 'ChannelID' is dynamic
+[16:53:53] [PAYLOAD] 7146
+[16:53:53] [DEBUG] reflective value found and filtered out
+[16:53:53] [DEBUG] setting match ratio for current parameter to 0.657
+[16:53:53] [INFO] confirming that GET parameter 'ChannelID' is dynamic
+[16:53:53] [PAYLOAD] 1972
+[16:53:57] [DEBUG] reflective value found and filtered out
+[16:53:57] [INFO] GET parameter 'ChannelID' is dynamic
+[16:53:57] [PAYLOAD] )"")'()')(
+sqlmap got a 302 redirect to index.php - What target address do you want to use from now on? http://fist.xjtu.edu.cn:80//newslist.php (default) or provide another target address based also on the redirection got from the application
+
+> 
+[16:54:13] [ERROR] exit
+
+[*] shutting down at: 16:54:13
+

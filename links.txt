@@ -1,0 +1,10 @@
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/
+2012-08-15 21:28:53 http://fist.xjtu.edu.cn/down/
+2012-08-15 21:28:53 http://fist.xjtu.edu.cn/down/
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/newslis.php
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/centers.php?ChannelID=14
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/MMRC/
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/studentlist.php
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/studentlist.php
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/COC/
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CMC/

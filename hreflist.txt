@@ -1,0 +1,56 @@
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/about.php ChannelID: ClassIDOne:77 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/centers.php ChannelID:14 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/center.php ChannelID:14 ClassIDOne:71 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/studentlist.php ChannelID:11 ClassIDOne:36 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/newslist.php ChannelID: ClassIDOne:20 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/joblist.php fl:1 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/showarticle.php aid:150 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/zp.php id:5 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/student.php aid:171 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/content.php aid:147 
+2012-08-15 21:28:43 http://fist.xjtu.edu.cn/center.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/ p:1 ChannelID:6 ClassIDThree:0 ClassIDTwo:0 ClassIDOne:39 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/ keywords: p:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/ areaClassIDFour: areaClassIDThree: ChannelID:11 ClassIDOne:36 p:1 ClassIDTwo:0 areaClassIDTwo: areaClassIDOne: ClassIDThree:0 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/MTS/center.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/MTS/about.php ChannelID:5 ClassIDOne:77 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/MTS/ areaClassIDFour: areaClassIDThree: ChannelID:11 ClassIDOne:36 p:0 ClassIDTwo:0 areaClassIDTwo: areaClassIDOne: ClassIDThree:0 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CMBM/about.php ChannelID:5 ClassIDOne:78 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/COC/newslist.php ChannelID:6 ClassIDOne:20 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/COC/joblist.php fl:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/COC/about.php ChannelID:14 ClassIDOne:77 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/COC/centers.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/list.php ChannelID:5 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CTM/studentlist.php ChannelID:14 ClassIDOne:36 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CTM/staff.php ChannelID:8 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CTM/showarticle.php aid:31 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CTM/centers.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CTM/list.php ChannelID:9 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CSME/list.php ChannelID:17 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/listlx.php ChannelID:15 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/staff.php ChannelID:8 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CMC/newslist.php ChannelID:18 ClassIDOne:20 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/listlx.php ChannelID:19 ClassIDOne:61 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/contact.php ChannelID:18 ClassIDOne:80 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/ p:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CBERM/joblist.php fl:2 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/center/CBERM/content.php aid:152 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/centers.php ChannelID:14 ClassIDOne:44 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/content.php aid:85 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/newslist.php ChannelID:6 ClassIDOne:20 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/about.php ChannelID:3 ClassIDOne:77 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/centers.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/center.php ChannelID:14 ClassIDOne:71 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/studentlist.php ChannelID:3 ClassIDOne:36 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/center.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/yuyue/joblist.php fl:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/joblist.php fl:2 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/about.php ChannelID:3 ClassIDOne:77 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/centers.php ChannelID:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/center.php ChannelID:14 ClassIDOne:71 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/studentlist.php ChannelID:3 ClassIDOne:36 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/newslist.php ChannelID:3 ClassIDOne:20 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/zp.php id:6 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/ p:1 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/zp_list.php id:10 
+2012-08-15 21:28:54 http://fist.xjtu.edu.cn/down/center.php ChannelID:1 

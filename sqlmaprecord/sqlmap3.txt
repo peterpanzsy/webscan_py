@@ -1,0 +1,297 @@
+ 247 [13:32:30] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the level is higher than the provided
+ 248 [13:32:30] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (Generic comment)' because the level is higher than the provided
+ 249 [13:32:30] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause' because the risk is higher than the provided
+ 250 [13:32:30] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the risk is higher than the provided
+ 251 [13:32:30] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (Generic comment)' because the risk is higher than the provided
+ 252 [13:32:30] [DEBUG] skipping test 'MySQL boolean-based blind - WHERE or HAVING clause (RLIKE)' because the level is higher than the provided
+ 253 [13:32:30] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace' because the level is higher than the provided
+ 254 [13:32:30] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 255 [13:32:30] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (MAKE_SET - original value)' because the level is higher than the provided
+ 256 [13:32:30] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (ELT - original value)' because the level is higher than the provided
+ 257 [13:32:30] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 258 [13:32:30] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 259 [13:32:30] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 260 [13:32:30] [DEBUG] skipping test 'Oracle boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 261 [13:32:30] [DEBUG] skipping test 'Microsoft Access boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 262 [13:32:30] [DEBUG] skipping test 'SAP MaxDB boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+ 263 [13:32:30] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 264 [13:32:30] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses (original value)' because the level is higher than the provided
+ 265 [13:32:30] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 266 [13:32:30] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 267 [13:32:30] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - ORDER BY clause' because the level is higher than the provided
+ 268 [13:32:30] [DEBUG] skipping test 'Oracle boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 269 [13:32:30] [DEBUG] skipping test 'Microsoft Access boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 270 [13:32:30] [DEBUG] skipping test 'MySQL stacked conditional-error blind queries' because the level is higher than the provided
+ 271 [13:32:30] [DEBUG] skipping test 'PostgreSQL stacked conditional-error blind queries' because the level is higher than the provided
+ 272 [13:32:30] [DEBUG] skipping test 'Microsoft SQL Server/Sybase stacked conditional-error blind queries' because the level is higher than the provided
+ 408 [13:32:31] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)' because the level is higher than the provided
+ 454 [13:32:31] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the level is higher than the provided
+ 455 [13:32:31] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the level is higher than the provided
+ 456 [13:32:31] [DEBUG] skipping test 'Firebird AND error-based - WHERE or HAVING clause' because the level is higher than the provided
+ 457 [13:32:31] [DEBUG] skipping test 'MySQL >= 5.0 OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+ 458 [13:32:31] [DEBUG] skipping test 'MySQL OR error-based - WHERE or HAVING clause' because the level is higher than the provided
+ 459 [13:32:31] [DEBUG] skipping test 'PostgreSQL OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+ 460 [13:32:31] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+ 461 [13:32:31] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause (IN)' because the risk is higher than the provided
+ 462 [13:32:31] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (XMLType)' because the risk is higher than the provided
+ 463 [13:32:31] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the risk is higher than the provided
+ 464 [13:32:31] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the risk is higher than the provided
+ 465 [13:32:31] [DEBUG] skipping test 'Firebird OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+ 466 [13:32:31] [DEBUG] skipping test 'MySQL >= 5.0 error-based - Parameter replace' because the level is higher than the provided
+ 467 [13:32:31] [DEBUG] skipping test 'PostgreSQL error-based - Parameter replace' because the level is higher than the provided
+ 468 [13:32:31] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - Parameter replace' because the level is higher than the provided
+ 469 [13:32:31] [DEBUG] skipping test 'Oracle error-based - Parameter replace' because the level is higher than the provided
+ 470 [13:32:31] [DEBUG] skipping test 'Firebird error-based - Parameter replace' because the level is higher than the provided
+ 471 [13:32:31] [DEBUG] skipping test 'MySQL >= 5.0 error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 472 [13:32:31] [DEBUG] skipping test 'PostgreSQL error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 473 [13:32:31] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - ORDER BY clause' because the level is higher than the provided
+ 474 [13:32:31] [DEBUG] skipping test 'Oracle error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+ 520 [13:32:32] [DEBUG] skipping test 'MySQL < 5.0.12 stacked queries (heavy query)' because the risk is higher than the provided
+ 566 [13:32:32] [DEBUG] skipping test 'PostgreSQL stacked queries (heavy query)' because the risk is higher than the provided
+ 567 [13:32:32] [DEBUG] skipping test 'PostgreSQL < 8.2 stacked queries (Glibc)' because the level is higher than the provided
+ 613 [13:32:33] [DEBUG] skipping test 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE)' because the level is higher than the provided
+ 614 [13:32:33] [DEBUG] skipping test 'Oracle stacked queries (heavy query)' because the risk is higher than the provided
+ 615 [13:32:33] [DEBUG] skipping test 'Oracle stacked queries (DBMS_LOCK.SLEEP)' because the level is higher than the provided
+ 616 [13:32:33] [DEBUG] skipping test 'Oracle stacked queries (USER_LOCK.SLEEP)' because the level is higher than the provided
+ 617 [13:32:33] [DEBUG] skipping test 'SQLite > 2.0 stacked queries (heavy query)' because the risk is higher than the provided
+ 618 [13:32:33] [DEBUG] skipping test 'Firebird stacked queries (heavy query)' because the risk is higher than the provided
+ 664 [13:32:33] [DEBUG] skipping test 'MySQL > 5.0.11 AND time-based blind (comment)' because the level is higher than the provided
+ 665 [13:32:33] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query)' because the risk is higher than the provided
+ 666 [13:32:33] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 712 [13:32:34] [DEBUG] skipping test 'PostgreSQL > 8.1 AND time-based blind (comment)' because the level is higher than the provided
+ 713 [13:32:34] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query)' because the risk is higher than the provided
+ 714 [13:32:34] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 760 [13:32:34] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query)' because the risk is higher than the provided
+ 761 [13:32:34] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 807 [13:32:34] [DEBUG] skipping test 'Oracle AND time-based blind (comment)' because the level is higher than the provided
+ 808 [13:32:34] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query)' because the risk is higher than the provided
+ 809 [13:32:34] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 810 [13:32:34] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query)' because the risk is higher than the provided
+ 811 [13:32:34] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 812 [13:32:34] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query)' because the risk is higher than the provided
+ 813 [13:32:34] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+ 814 [13:32:34] [DEBUG] skipping test 'MySQL > 5.0.11 OR time-based blind' because the risk is higher than the provided
+ 815 [13:32:34] [DEBUG] skipping test 'MySQL < 5.0.12 OR time-based blind (heavy query)' because the risk is higher than the provided
+ 816 [13:32:34] [DEBUG] skipping test 'PostgreSQL > 8.1 OR time-based blind' because the risk is higher than the provided
+ 817 [13:32:34] [DEBUG] skipping test 'PostgreSQL OR time-based blind (heavy query)' because the risk is higher than the provided
+ 818 [13:32:34] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR time-based blind (heavy query)' because the risk is higher than the provided
+ 819 [13:32:34] [DEBUG] skipping test 'Oracle OR time-based blind' because the risk is higher than the provided
+ 820 [13:32:34] [DEBUG] skipping test 'Oracle OR time-based blind (heavy query)' because the risk is higher than the provided
+ 821 [13:32:34] [DEBUG] skipping test 'SQLite > 2.0 OR time-based blind (heavy query)' because the risk is higher than the provided
+ 822 [13:32:34] [DEBUG] skipping test 'Firebird OR time-based blind (heavy query)' because the risk is higher than the provided
+1264 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+1265 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+1266 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+1267 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+1268 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+1269 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+1270 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+1271 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+1272 [13:32:41] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+1715 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+1716 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+1717 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+1718 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+1719 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+1720 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+1721 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+1722 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+1723 [13:32:48] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+1926 [13:35:51] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the level is higher than the provided
+1927 [13:35:51] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (Generic comment)' because the level is higher than the provided
+1928 [13:35:51] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause' because the risk is higher than the provided
+1929 [13:35:51] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the risk is higher than the provided
+1930 [13:35:51] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (Generic comment)' because the risk is higher than the provided
+1931 [13:35:51] [DEBUG] skipping test 'MySQL boolean-based blind - WHERE or HAVING clause (RLIKE)' because the level is higher than the provided
+1932 [13:35:51] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace' because the level is higher than the provided
+1933 [13:35:51] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1934 [13:35:51] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (MAKE_SET - original value)' because the level is higher than the provided
+1935 [13:35:51] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (ELT - original value)' because the level is higher than the provided
+1936 [13:35:51] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1937 [13:35:51] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1938 [13:35:51] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1939 [13:35:51] [DEBUG] skipping test 'Oracle boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1940 [13:35:51] [DEBUG] skipping test 'Microsoft Access boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1941 [13:35:51] [DEBUG] skipping test 'SAP MaxDB boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+1942 [13:35:51] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+1943 [13:35:51] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses (original value)' because the level is higher than the provided
+1944 [13:35:51] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+1945 [13:35:51] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+1946 [13:35:51] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - ORDER BY clause' because the level is higher than the provided
+1947 [13:35:51] [DEBUG] skipping test 'Oracle boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+1948 [13:35:51] [DEBUG] skipping test 'Microsoft Access boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+1949 [13:35:51] [DEBUG] skipping test 'MySQL stacked conditional-error blind queries' because the level is higher than the provided
+1950 [13:35:51] [DEBUG] skipping test 'PostgreSQL stacked conditional-error blind queries' because the level is higher than the provided
+1951 [13:35:51] [DEBUG] skipping test 'Microsoft SQL Server/Sybase stacked conditional-error blind queries' because the level is higher than the provided
+2087 [13:35:52] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)' because the level is higher than the provided
+2133 [13:35:53] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the level is higher than the provided
+2134 [13:35:53] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the level is higher than the provided
+2135 [13:35:53] [DEBUG] skipping test 'Firebird AND error-based - WHERE or HAVING clause' because the level is higher than the provided
+2136 [13:35:53] [DEBUG] skipping test 'MySQL >= 5.0 OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+2137 [13:35:53] [DEBUG] skipping test 'MySQL OR error-based - WHERE or HAVING clause' because the level is higher than the provided
+2138 [13:35:53] [DEBUG] skipping test 'PostgreSQL OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+2139 [13:35:53] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+2140 [13:35:53] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause (IN)' because the risk is higher than the provided
+2141 [13:35:53] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (XMLType)' because the risk is higher than the provided
+2142 [13:35:53] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the risk is higher than the provided
+2143 [13:35:53] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the risk is higher than the provided
+2144 [13:35:53] [DEBUG] skipping test 'Firebird OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+2145 [13:35:53] [DEBUG] skipping test 'MySQL >= 5.0 error-based - Parameter replace' because the level is higher than the provided
+2146 [13:35:53] [DEBUG] skipping test 'PostgreSQL error-based - Parameter replace' because the level is higher than the provided
+2147 [13:35:53] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - Parameter replace' because the level is higher than the provided
+2148 [13:35:53] [DEBUG] skipping test 'Oracle error-based - Parameter replace' because the level is higher than the provided
+2149 [13:35:53] [DEBUG] skipping test 'Firebird error-based - Parameter replace' because the level is higher than the provided
+2150 [13:35:53] [DEBUG] skipping test 'MySQL >= 5.0 error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+2151 [13:35:53] [DEBUG] skipping test 'PostgreSQL error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+2152 [13:35:53] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - ORDER BY clause' because the level is higher than the provided
+2153 [13:35:53] [DEBUG] skipping test 'Oracle error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+2199 [13:35:53] [DEBUG] skipping test 'MySQL < 5.0.12 stacked queries (heavy query)' because the risk is higher than the provided
+2245 [13:35:54] [DEBUG] skipping test 'PostgreSQL stacked queries (heavy query)' because the risk is higher than the provided
+2246 [13:35:54] [DEBUG] skipping test 'PostgreSQL < 8.2 stacked queries (Glibc)' because the level is higher than the provided
+2292 [13:35:54] [DEBUG] skipping test 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE)' because the level is higher than the provided
+2293 [13:35:54] [DEBUG] skipping test 'Oracle stacked queries (heavy query)' because the risk is higher than the provided
+2294 [13:35:54] [DEBUG] skipping test 'Oracle stacked queries (DBMS_LOCK.SLEEP)' because the level is higher than the provided
+2295 [13:35:54] [DEBUG] skipping test 'Oracle stacked queries (USER_LOCK.SLEEP)' because the level is higher than the provided
+2296 [13:35:54] [DEBUG] skipping test 'SQLite > 2.0 stacked queries (heavy query)' because the risk is higher than the provided
+2297 [13:35:54] [DEBUG] skipping test 'Firebird stacked queries (heavy query)' because the risk is higher than the provided
+2343 [13:35:54] [DEBUG] skipping test 'MySQL > 5.0.11 AND time-based blind (comment)' because the level is higher than the provided
+2344 [13:35:54] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query)' because the risk is higher than the provided
+2345 [13:35:54] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2391 [13:35:55] [DEBUG] skipping test 'PostgreSQL > 8.1 AND time-based blind (comment)' because the level is higher than the provided
+2392 [13:35:55] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query)' because the risk is higher than the provided
+2393 [13:35:55] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2439 [13:35:55] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query)' because the risk is higher than the provided
+2440 [13:35:55] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2486 [13:35:56] [DEBUG] skipping test 'Oracle AND time-based blind (comment)' because the level is higher than the provided
+2487 [13:35:56] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query)' because the risk is higher than the provided
+2488 [13:35:56] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2489 [13:35:56] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query)' because the risk is higher than the provided
+2490 [13:35:56] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2491 [13:35:56] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query)' because the risk is higher than the provided
+2492 [13:35:56] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+2493 [13:35:56] [DEBUG] skipping test 'MySQL > 5.0.11 OR time-based blind' because the risk is higher than the provided
+2494 [13:35:56] [DEBUG] skipping test 'MySQL < 5.0.12 OR time-based blind (heavy query)' because the risk is higher than the provided
+2495 [13:35:56] [DEBUG] skipping test 'PostgreSQL > 8.1 OR time-based blind' because the risk is higher than the provided
+2496 [13:35:56] [DEBUG] skipping test 'PostgreSQL OR time-based blind (heavy query)' because the risk is higher than the provided
+2497 [13:35:56] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR time-based blind (heavy query)' because the risk is higher than the provided
+2498 [13:35:56] [DEBUG] skipping test 'Oracle OR time-based blind' because the risk is higher than the provided
+2499 [13:35:56] [DEBUG] skipping test 'Oracle OR time-based blind (heavy query)' because the risk is higher than the provided
+2500 [13:35:56] [DEBUG] skipping test 'SQLite > 2.0 OR time-based blind (heavy query)' because the risk is higher than the provided
+2501 [13:35:56] [DEBUG] skipping test 'Firebird OR time-based blind (heavy query)' because the risk is higher than the provided
+2943 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+2944 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+2945 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+2946 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+2947 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+2948 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+2949 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+2950 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+2951 [13:36:02] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+3394 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+3395 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+3396 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+3397 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+3398 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+3399 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+3400 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+3401 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+3402 [13:36:09] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+3581 [13:36:11] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the level is higher than the provided
+3582 [13:36:11] [DEBUG] skipping test 'AND boolean-based blind - WHERE or HAVING clause (Generic comment)' because the level is higher than the provided
+3583 [13:36:11] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause' because the risk is higher than the provided
+3584 [13:36:11] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)' because the risk is higher than the provided
+3585 [13:36:11] [DEBUG] skipping test 'OR boolean-based blind - WHERE or HAVING clause (Generic comment)' because the risk is higher than the provided
+3586 [13:36:11] [DEBUG] skipping test 'MySQL boolean-based blind - WHERE or HAVING clause (RLIKE)' because the level is higher than the provided
+3587 [13:36:11] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace' because the level is higher than the provided
+3588 [13:36:11] [DEBUG] skipping test 'Generic boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3589 [13:36:11] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (MAKE_SET - original value)' because the level is higher than the provided
+3590 [13:36:11] [DEBUG] skipping test 'MySQL boolean-based blind - Parameter replace (ELT - original value)' because the level is higher than the provided
+3591 [13:36:11] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3592 [13:36:11] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3593 [13:36:11] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3594 [13:36:11] [DEBUG] skipping test 'Oracle boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3595 [13:36:11] [DEBUG] skipping test 'Microsoft Access boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3596 [13:36:11] [DEBUG] skipping test 'SAP MaxDB boolean-based blind - Parameter replace (original value)' because the level is higher than the provided
+3597 [13:36:11] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3598 [13:36:11] [DEBUG] skipping test 'Generic boolean-based blind - GROUP BY and ORDER BY clauses (original value)' because the level is higher than the provided
+3599 [13:36:11] [DEBUG] skipping test 'MySQL >= 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3600 [13:36:11] [DEBUG] skipping test 'MySQL < 5.0 boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3601 [13:36:11] [DEBUG] skipping test 'Microsoft SQL Server/Sybase boolean-based blind - ORDER BY clause' because the level is higher than the provided
+3602 [13:36:11] [DEBUG] skipping test 'Oracle boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3603 [13:36:11] [DEBUG] skipping test 'Microsoft Access boolean-based blind - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3604 [13:36:11] [DEBUG] skipping test 'MySQL stacked conditional-error blind queries' because the level is higher than the provided
+3605 [13:36:11] [DEBUG] skipping test 'PostgreSQL stacked conditional-error blind queries' because the level is higher than the provided
+3606 [13:36:11] [DEBUG] skipping test 'Microsoft SQL Server/Sybase stacked conditional-error blind queries' because the level is higher than the provided
+3742 [13:36:12] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND error-based - WHERE or HAVING clause (IN)' because the level is higher than the provided
+3788 [13:36:13] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the level is higher than the provided
+3789 [13:36:13] [DEBUG] skipping test 'Oracle AND error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the level is higher than the provided
+3790 [13:36:13] [DEBUG] skipping test 'Firebird AND error-based - WHERE or HAVING clause' because the level is higher than the provided
+3791 [13:36:13] [DEBUG] skipping test 'MySQL >= 5.0 OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+3792 [13:36:13] [DEBUG] skipping test 'MySQL OR error-based - WHERE or HAVING clause' because the level is higher than the provided
+3793 [13:36:13] [DEBUG] skipping test 'PostgreSQL OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+3794 [13:36:13] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+3795 [13:36:13] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR error-based - WHERE or HAVING clause (IN)' because the risk is higher than the provided
+3796 [13:36:13] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (XMLType)' because the risk is higher than the provided
+3797 [13:36:13] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (utl_inaddr.get_host_address)' because the risk is higher than the provided
+3798 [13:36:13] [DEBUG] skipping test 'Oracle OR error-based - WHERE or HAVING clause (ctxsys.drithsx.sn)' because the risk is higher than the provided
+3799 [13:36:13] [DEBUG] skipping test 'Firebird OR error-based - WHERE or HAVING clause' because the risk is higher than the provided
+3800 [13:36:13] [DEBUG] skipping test 'MySQL >= 5.0 error-based - Parameter replace' because the level is higher than the provided
+3801 [13:36:13] [DEBUG] skipping test 'PostgreSQL error-based - Parameter replace' because the level is higher than the provided
+3802 [13:36:13] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - Parameter replace' because the level is higher than the provided
+3803 [13:36:13] [DEBUG] skipping test 'Oracle error-based - Parameter replace' because the level is higher than the provided
+3804 [13:36:13] [DEBUG] skipping test 'Firebird error-based - Parameter replace' because the level is higher than the provided
+3805 [13:36:13] [DEBUG] skipping test 'MySQL >= 5.0 error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3806 [13:36:13] [DEBUG] skipping test 'PostgreSQL error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3807 [13:36:13] [DEBUG] skipping test 'Microsoft SQL Server/Sybase error-based - ORDER BY clause' because the level is higher than the provided
+3808 [13:36:13] [DEBUG] skipping test 'Oracle error-based - GROUP BY and ORDER BY clauses' because the level is higher than the provided
+3854 [13:36:13] [DEBUG] skipping test 'MySQL < 5.0.12 stacked queries (heavy query)' because the risk is higher than the provided
+3900 [13:36:14] [DEBUG] skipping test 'PostgreSQL stacked queries (heavy query)' because the risk is higher than the provided
+3901 [13:36:14] [DEBUG] skipping test 'PostgreSQL < 8.2 stacked queries (Glibc)' because the level is higher than the provided
+3947 [13:36:14] [DEBUG] skipping test 'Oracle stacked queries (DBMS_PIPE.RECEIVE_MESSAGE)' because the level is higher than the provided
+3948 [13:36:14] [DEBUG] skipping test 'Oracle stacked queries (heavy query)' because the risk is higher than the provided
+3949 [13:36:14] [DEBUG] skipping test 'Oracle stacked queries (DBMS_LOCK.SLEEP)' because the level is higher than the provided
+3950 [13:36:14] [DEBUG] skipping test 'Oracle stacked queries (USER_LOCK.SLEEP)' because the level is higher than the provided
+3951 [13:36:14] [DEBUG] skipping test 'SQLite > 2.0 stacked queries (heavy query)' because the risk is higher than the provided
+3952 [13:36:14] [DEBUG] skipping test 'Firebird stacked queries (heavy query)' because the risk is higher than the provided
+3998 [13:36:15] [DEBUG] skipping test 'MySQL > 5.0.11 AND time-based blind (comment)' because the level is higher than the provided
+3999 [13:36:15] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query)' because the risk is higher than the provided
+4000 [13:36:15] [DEBUG] skipping test 'MySQL < 5.0.12 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4046 [13:36:15] [DEBUG] skipping test 'PostgreSQL > 8.1 AND time-based blind (comment)' because the level is higher than the provided
+4047 [13:36:15] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query)' because the risk is higher than the provided
+4048 [13:36:15] [DEBUG] skipping test 'PostgreSQL AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4094 [13:36:15] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query)' because the risk is higher than the provided
+4095 [13:36:15] [DEBUG] skipping test 'Microsoft SQL Server/Sybase AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4141 [13:36:16] [DEBUG] skipping test 'Oracle AND time-based blind (comment)' because the level is higher than the provided
+4142 [13:36:16] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query)' because the risk is higher than the provided
+4143 [13:36:16] [DEBUG] skipping test 'Oracle AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4144 [13:36:16] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query)' because the risk is higher than the provided
+4145 [13:36:16] [DEBUG] skipping test 'SQLite > 2.0 AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4146 [13:36:16] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query)' because the risk is higher than the provided
+4147 [13:36:16] [DEBUG] skipping test 'Firebird AND time-based blind (heavy query - comment)' because the risk is higher than the provided
+4148 [13:36:16] [DEBUG] skipping test 'MySQL > 5.0.11 OR time-based blind' because the risk is higher than the provided
+4149 [13:36:16] [DEBUG] skipping test 'MySQL < 5.0.12 OR time-based blind (heavy query)' because the risk is higher than the provided
+4150 [13:36:16] [DEBUG] skipping test 'PostgreSQL > 8.1 OR time-based blind' because the risk is higher than the provided
+4151 [13:36:16] [DEBUG] skipping test 'PostgreSQL OR time-based blind (heavy query)' because the risk is higher than the provided
+4152 [13:36:16] [DEBUG] skipping test 'Microsoft SQL Server/Sybase OR time-based blind (heavy query)' because the risk is higher than the provided
+4153 [13:36:16] [DEBUG] skipping test 'Oracle OR time-based blind' because the risk is higher than the provided
+4154 [13:36:16] [DEBUG] skipping test 'Oracle OR time-based blind (heavy query)' because the risk is higher than the provided
+4155 [13:36:16] [DEBUG] skipping test 'SQLite > 2.0 OR time-based blind (heavy query)' because the risk is higher than the provided
+4156 [13:36:16] [DEBUG] skipping test 'Firebird OR time-based blind (heavy query)' because the risk is higher than the provided
+4598 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+4599 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+4600 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+4601 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+4602 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+4603 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+4604 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+4605 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+4606 [13:36:23] [DEBUG] skipping test 'MySQL UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+5049 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 1 to 10 columns' because the level is higher than the provided
+5050 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+5051 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 11 to 20 columns' because the level is higher than the provided
+5052 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+5053 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 21 to 30 columns' because the level is higher than the provided
+5054 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+5055 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 31 to 40 columns' because the level is higher than the provided
+5056 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided
+5057 [13:36:29] [DEBUG] skipping test 'Generic UNION query (NULL) - 41 to 50 columns' because the level is higher than the provided

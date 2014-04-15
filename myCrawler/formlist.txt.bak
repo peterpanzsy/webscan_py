@@ -1,0 +1,15 @@
+2012-08-17 09:48:51 http://fist.xjtu.edu.cn/search.php
+input: style:border:0px; name:keywords width:187 maxlength:100 type:text size:10 
+input: src:img/ind_r5_c16.jpg name:Submit type:image height:35 width:65 border:0 
+
+2012-08-17 09:49:01 http://fist.xjtu.edu.cn/down/Login.asp
+input: name:UserName onmouseout:this.style.borderColor='#A1BCA3' onmouseover:this.style.borderColor='#99E300' maxlength:30 id:UserName tabindex:1 
+input: name:UserPwd onmouseout:this.style.borderColor='#A1BCA3' onmouseover:this.style.borderColor='#99E300' maxlength:20 size:16 type:password id:UserPwd tabindex:2 
+input: name:verifycode maxlength:4 size:4 type:text id:verifycode tabindex:3 
+input: type:hidden name:action value:login id:action 
+input: src:images/login.gif name:login type:image alt:µÇÂ¼ border:0 id:login 
+
+2012-08-17 09:49:01 http://fist.xjtu.edu.cn/center/MMRC/search.php
+input: style:border:0px; name:keywords width:187 maxlength:100 type:text size:10 
+input: src:img/ind_r5_c16.jpg name:Submit type:image height:35 width:65 border:0 
+

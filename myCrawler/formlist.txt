@@ -1,0 +1,4 @@
+2012-08-17 13:27:20 http://fist.xjtu.edu.cn/search.php
+input: style:border:0px; name:keywords width:187 maxlength:100 type:text size:10 
+input: src:img/ind_r5_c16.jpg name:Submit type:image height:35 width:65 border:0 
+

